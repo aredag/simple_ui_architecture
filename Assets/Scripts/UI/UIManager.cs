@@ -4,6 +4,12 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
 
+#region Data
+
+    [SerializeField] UIPanelsIndex _uiPanelsIndex;
+
+#endregion
+
 #region UIPanels
 
     [SerializeField] MainMenuUIPanel _mainMenuUIPanel;

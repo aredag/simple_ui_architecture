@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640b8815b1e79924d94c3bc44196a548, type: 3}
+  m_Name: UIPanelIndex
+  m_EditorClassIdentifier: 
+  _allPanelsData:
+  - {fileID: 11400000, guid: e8ef73c19847df44eae9b85e80914b39, type: 2}
+  - {fileID: 11400000, guid: c3643ea33593ce44c809e96bfc1145a1, type: 2}
+  - {fileID: 11400000, guid: 9e5a2b32cef34644b89f48f76984997b, type: 2}
+  - {fileID: 11400000, guid: 5b62f01c0965b6f46ae1e27c70c0e8ac, type: 2}
