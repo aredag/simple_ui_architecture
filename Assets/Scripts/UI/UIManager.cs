@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -46,6 +47,20 @@ public class UIManager : MonoBehaviour
             Instance = this;
             UIPanelsStack = new Stack<IUIPanel>();
         }
+
+        var panelsArray = new BaseUIPanel[]
+        {
+           _mainMenuUIPanel,
+           _optionsUIPanel,
+           _inventoryUIPanel,
+           _graphicsSettingsUIPanel
+        };
+
+        foreach (var panel in panelsArray)
+        {
+           panel.Init(); 
+        }
+
     }
 
 
@@ -55,38 +70,62 @@ public class UIManager : MonoBehaviour
         _mainMenuUIPanel.OptionsButton.Init(OptionsButton_handler);
         _mainMenuUIPanel.InventoryButton.Init(InventoryButton_handler);
         _optionsUIPanel.GraphicsButton.Init(GraphicsButton_handler);
+        HideUnhideBackButton();
     }
 
-    void Flow()
+    async void Flow()
     {
-        _mainMenuUIPanel.Show();
+        await _mainMenuUIPanel.ShowAnimAsync();
     }
 
-    void Back()
+    async void Back()
     {
-        if(UIPanelsStack.Count == 1) return;
+        if (UIPanelsStack.Count == 1) return;
         
         var currentPanel = UIPanelsStack.Pop();
-        currentPanel.Hide();
+        await currentPanel.HideAnimAsync();
 
         var previousPanel = UIPanelsStack.Peek();
-        previousPanel.Show();
+        await previousPanel.ShowAnimAsync();
     }
 
 #region Handlers
 
-    public void OptionsButton_handler()
+    public async void OptionsButton_handler()
     {
-        _optionsUIPanel.Show();
+        await _optionsUIPanel.ShowAnimAsync();
     }
     
-    public void GraphicsButton_handler()
+    public async void GraphicsButton_handler()
     {
-        _graphicsSettingsUIPanel.Show();
+        await _graphicsSettingsUIPanel.ShowAnimAsync();
     }
-    public void InventoryButton_handler()
+    public async void InventoryButton_handler()
     {
-        _inventoryUIPanel.Show();
+        await _inventoryUIPanel.ShowAnimAsync();
+        
+    }
+
+
+    public void Panel_handler(BaseUIPanel _panel)
+    {
+        if (!Instance.UIPanelsStack.Contains(_panel))
+        {
+            if (Instance.UIPanelsStack.Count > 0)
+            {
+                var previousPanel = UIManager.Instance.UIPanelsStack.Peek();
+                previousPanel?.HideAnimAsync();
+            }
+
+            Instance.UIPanelsStack.Push(_panel);
+        }
+
+        HideUnhideBackButton();
+    }
+
+    void HideUnhideBackButton()
+    {
+        _backButton.gameObject.SetActive(UIPanelsStack.Count != 1);
     }
 
 #endregion

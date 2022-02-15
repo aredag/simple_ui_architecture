@@ -496,6 +496,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2259004733064128887, guid: 97ce5a51586f63c429c85a5a32962975, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779685163194527114, guid: 97ce5a51586f63c429c85a5a32962975, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779685163194527114, guid: 97ce5a51586f63c429c85a5a32962975, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779685163194527114, guid: 97ce5a51586f63c429c85a5a32962975, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6186185316675080328, guid: 97ce5a51586f63c429c85a5a32962975, type: 3}
       propertyPath: m_Name
       value: P_MainCanvas
